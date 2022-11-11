@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import Image from "./image";
 import imageList from "./image-data";
 
-const Gameboard = ({ handleImageClick }) => {
-  const [gameboard, setGameboard] = useState([]);
-  const [imageOrder, setImageOrder] = useState([]);
+const Gameboard = ({ updateScore }) => {
 
   const shuffle = (array) => {
     let currentIndex = array.length,
@@ -20,6 +18,11 @@ const Gameboard = ({ handleImageClick }) => {
     }
     return array;
   };
+
+  const handleImageClick = (id) => {
+    updateScore(id);
+    shuffle(imageList);
+  }
 
   return (
     <div className="gameboard">
